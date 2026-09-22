@@ -216,7 +216,30 @@ public void ejecutarProceso(String entrada) {
         }
     }
       
-      
+    public void eliminarProceso(String nombreProceso) {
+        try {
+            String ejecutable = nombreProceso;
+            if (ejecutable.contains(" ")) {
+                ejecutable = ejecutable.split(" ")[0]; // Remueve el texto "(120 MB)" si viene pegado
+            }
+            if (!ejecutable.contains(".")) {
+                ejecutable += ".exe";
+            }
 
-}
+            registrarLog("Cerrando proceso: " + ejecutable);
+            ProcessBuilder pb = new ProcessBuilder("taskkill", "/F", "/IM", ejecutable);
+            Process p = pb.start();
+
+            BufferedReader lector = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                registrarLog("Sistema: " + linea);
+            }
+            p.waitFor();
+        } catch (Exception ex) {
+            registrarLog("Error al cerrar proceso: " + ex.getMessage());
+        }
+    }
+}      
+
 //comentario 
