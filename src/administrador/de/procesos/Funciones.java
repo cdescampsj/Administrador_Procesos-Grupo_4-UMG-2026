@@ -5,6 +5,7 @@
 package administrador.de.procesos;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -132,6 +133,69 @@ public class Funciones {
         return filtrados;
     }
     
-    
+    public String resolverRutaComun(String entrada) {
+        String app = entrada.toLowerCase().trim();
+        String appSinExe = app.replace(".exe", "");
+
+        if (mapaRutasProcesos.containsKey(appSinExe + ".exe")) {
+            return mapaRutasProcesos.get(appSinExe + ".exe");
+        }
+
+        String localAppData = System.getenv("LOCALAPPDATA");
+
+        switch (appSinExe) {
+            case "discord":
+                if (localAppData != null) {
+                    File dirDiscord = new File(localAppData + "\\Discord");
+                    if (dirDiscord.exists() && dirDiscord.isDirectory()) {
+                        File[] subdirectorios = dirDiscord.listFiles();
+                        if (subdirectorios != null) {
+                            for (File sub : subdirectorios) {
+                                if (sub.isDirectory() && sub.getName().startsWith("app-")) {
+                                    File exe = new File(sub, "Discord.exe");
+                                    if (exe.exists()) return exe.getAbsolutePath();
+                                }
+                            }
+                        }
+                    }
+                }
+                return "discord";
+
+            case "spotify":
+                if (localAppData != null) {
+                    File spotifyExe = new File(localAppData + "\\Microsoft\\WindowsApps\\Spotify.exe");
+                    if (spotifyExe.exists()) return spotifyExe.getAbsolutePath();
+
+                    File spotifyDirect = new File(localAppData + "\\Spotify\\Spotify.exe");
+                    if (spotifyDirect.exists()) return spotifyDirect.getAbsolutePath();
+                }
+                return "spotify";
+
+            case "vscode":
+            case "code":
+                return "code";
+
+            case "word":
+            case "winword":
+                return "winword";
+
+            case "excel":
+                return "excel";
+
+            case "powerpoint":
+            case "powerpnt":
+                return "powerpnt";
+
+            case "chrome":
+                return "chrome";
+
+            case "edge":
+            case "msedge":
+                return "msedge";
+
+            default:
+                return entrada;
+        }
+    }
 }
 //comentario 
