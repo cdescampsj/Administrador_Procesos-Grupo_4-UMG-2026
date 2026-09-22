@@ -198,7 +198,23 @@ public class Funciones {
                 return entrada;
         }
     }
+public void ejecutarProceso(String entrada) {
+        try {
+            String objetivo = resolverRutaComun(entrada);
+            registrarLog("Iniciando aplicación: " + objetivo);
 
+            // Se suma al contador para el filtro "Más Usados"
+            String clave = entrada.toLowerCase().replace(".exe", "") + ".exe";
+            contadorUsoApps.put(clave, contadorUsoApps.getOrDefault(clave, 0) + 1);
+
+            ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "start", "", objetivo);
+            pb.start();
+
+            registrarLog("¡Proceso lanzado exitosamente!");
+        } catch (Exception ex) {
+            registrarLog("Error al abrir proceso: " + ex.getMessage());
+        }
+    }
       
       
 
