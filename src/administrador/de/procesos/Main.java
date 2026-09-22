@@ -32,6 +32,7 @@ public class Main extends JFrame {
         funciones = new Funciones(this::registrarLog);
 
         setTitle("Administrador de Procesos Windows - Extendido");
+        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
         setSize(850, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
