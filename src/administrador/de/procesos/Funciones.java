@@ -7,6 +7,7 @@ package administrador.de.procesos;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,5 +96,42 @@ public class Funciones {
 
         return listaProcesos;
     }
+    
+      public List<ProcesoInfo> filtrarYOrdenar(List<ProcesoInfo> listaOriginal, String textoBusqueda, int criterioOrden) {
+        List<ProcesoInfo> listaTrabajo = new ArrayList<>(listaOriginal);
+
+        // Criterios de orden
+        switch (criterioOrden) {
+            case 0: // Mayor consumo de RAM
+                listaTrabajo.sort((p1, p2) -> Double.compare(p2.getConsumoRAM(), p1.getConsumoRAM()));
+                break;
+            case 1: // Alfabético (A-Z)
+                listaTrabajo.sort(Comparator.comparing(p -> p.getNombre().toLowerCase()));
+                break;
+            case 2: // Más Usados / Frecuentes
+                listaTrabajo.sort((p1, p2) -> {
+                    int uso1 = contadorUsoApps.getOrDefault(p1.getNombre().toLowerCase(), 0);
+                    int uso2 = contadorUsoApps.getOrDefault(p2.getNombre().toLowerCase(), 0);
+                    return Integer.compare(uso2, uso1);
+                });
+                break;
+        }
+
+        // Filtro por búsqueda de texto
+        if (textoBusqueda == null || textoBusqueda.trim().isEmpty()) {
+            return listaTrabajo;
+        }
+
+        String busqueda = textoBusqueda.toLowerCase().trim();
+        List<ProcesoInfo> filtrados = new ArrayList<>();
+        for (ProcesoInfo p : listaTrabajo) {
+            if (p.getNombre().toLowerCase().contains(busqueda)) {
+                filtrados.add(p);
+            }
+        }
+        return filtrados;
+    }
+    
+    
 }
 //comentario 
