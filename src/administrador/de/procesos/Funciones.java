@@ -6,9 +6,9 @@ package administrador.de.procesos;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.util.Comparator;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,6 +98,7 @@ public class Funciones {
         return listaProcesos;
     }
     
+
       public List<ProcesoInfo> filtrarYOrdenar(List<ProcesoInfo> listaOriginal, String textoBusqueda, int criterioOrden) {
         List<ProcesoInfo> listaTrabajo = new ArrayList<>(listaOriginal);
 
@@ -197,5 +198,9 @@ public class Funciones {
                 return entrada;
         }
     }
+
+      
+      
+
 }
 //comentario 
