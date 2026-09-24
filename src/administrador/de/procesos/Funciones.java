@@ -18,6 +18,12 @@ import java.util.function.Consumer;
  *
  * @author Chris
  */
+/*Clase CREADA por:
+                        Christian Descamps
+                 Carne:  
+                        0901-24-3
+*/
+
 public class Funciones {
      public static class ProcesoInfo {
         private String nombre;
@@ -57,6 +63,14 @@ public class Funciones {
     public Map<String, Integer> getContadorUsoApps() {
         return contadorUsoApps;
     }
+    
+        /*FUNCIÓN programada por:
+                        Kevin Daniel Santos Castro 
+                 Carne:  
+                        0901-17-2994
+*/
+
+    
     public List<ProcesoInfo> obtenerProcesosActivos() {
         List<ProcesoInfo> listaProcesos = new ArrayList<>();
         registrarLog("Actualizando procesos y uso de RAM del sistema...");
@@ -97,7 +111,14 @@ public class Funciones {
 
         return listaProcesos;
     }
-    
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+     /*FUNCIÓN programada por:
+                        César Alessandro Sor Ortiz
+                 Carne:  
+                        0901 - 24 - 2640
+*/
+
 
       public List<ProcesoInfo> filtrarYOrdenar(List<ProcesoInfo> listaOriginal, String textoBusqueda, int criterioOrden) {
         List<ProcesoInfo> listaTrabajo = new ArrayList<>(listaOriginal);
@@ -133,7 +154,14 @@ public class Funciones {
         }
         return filtrados;
     }
-    
+ //--------------------------------------------------------------------------------------------------------------------------------------------------
+
+     /*FUNCIÓN programada por:
+                        Daniela Ayelin Balán Velásquez
+                 Carne:  
+                        0901 - 24 - 3596
+*/
+      
     public String resolverRutaComun(String entrada) {
         String app = entrada.toLowerCase().trim();
         String appSinExe = app.replace(".exe", "");
@@ -198,6 +226,16 @@ public class Funciones {
                 return entrada;
         }
     }
+    
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+     /*FUNCIÓN programada por:
+                        Cesar Gudiel 
+                 Carne:  
+                        0901-23-1191
+*/
+    
+    
 public void ejecutarProceso(String entrada) {
         try {
             String objetivo = resolverRutaComun(entrada);
@@ -216,6 +254,16 @@ public void ejecutarProceso(String entrada) {
         }
     }
       
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+     /*FUNCIÓN programada por:
+                        Cynthia Abigail Ruíz Pineda
+                 Carne:  
+                        0901 - 24 - 733
+*/
+    
+
+
     public void eliminarProceso(String nombreProceso) {
         try {
             String ejecutable = nombreProceso;
