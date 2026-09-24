@@ -15,6 +15,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*Clase Programada por:
+                        Christian Descamps
+                 Carne:  
+                        0901-24-3
+*/
+
 public class Main extends JFrame {
 
     private JTextField campoProceso;
@@ -38,7 +44,7 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
-        // --- 1. PANEL SUPERIOR: Crear procesos ---
+        //Configuración panel superior
         JPanel panelSuperior = new JPanel(new FlowLayout(FlowLayout.LEFT));
         
         JLabel lblSugeridos = new JLabel("Aplicación:");
@@ -71,7 +77,7 @@ public class Main extends JFrame {
         panelSuperior.add(lblManual);
         panelSuperior.add(campoProceso);
 
-        // --- 2. PANEL IZQUIERDO: Lista de Procesos + Filtro y Orden ---
+        // Configuración panel de procesos (izquierda)
         JPanel panelIzquierdo = new JPanel(new BorderLayout(5, 5));
         panelIzquierdo.setBorder(BorderFactory.createTitledBorder("Procesos Activos en Windows"));
         
@@ -99,7 +105,7 @@ public class Main extends JFrame {
         panelIzquierdo.add(scrollLista, BorderLayout.CENTER);
         panelIzquierdo.add(btnActualizar, BorderLayout.SOUTH);
 
-        // --- 3. PANEL CENTRAL: Consola y Botones ---
+        //Configuración panel central (Consola)
         JPanel panelCentral = new JPanel(new BorderLayout(5, 5));
         
         JPanel panelBotones = new JPanel(new FlowLayout());
