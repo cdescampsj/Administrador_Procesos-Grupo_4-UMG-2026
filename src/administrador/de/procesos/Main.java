@@ -146,9 +146,14 @@ public class Main extends JFrame {
 
         listaActivos.addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && listaActivos.getSelectedValue() != null) {
-                campoProceso.setText("");
-            }
-        });
+                String seleccionado = listaActivos.getSelectedValue();
+        // Extrae solo el nombre del proceso, quitando el "(X MB)"
+             String nombreProceso = seleccionado.split(" \\(")[0].trim();
+             comboSugeridos.setSelectedIndex(-1);                
+             campoProceso.setText(nombreProceso);
+             
+    }
+});
 
         btnActualizar.addActionListener(e -> refrescarDatosSistema());
 
