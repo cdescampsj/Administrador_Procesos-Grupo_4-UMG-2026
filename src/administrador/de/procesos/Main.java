@@ -14,6 +14,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /*Clase Programada por:
                         Christian Descamps
@@ -33,6 +34,7 @@ public class Main extends JFrame {
 
     private Funciones funciones;
     private List<Funciones.ProcesoInfo> listaCompletaProcesos = new ArrayList<>();
+    
 
     public Main() {
         funciones = new Funciones(this::registrarLog);
@@ -124,6 +126,7 @@ public class Main extends JFrame {
         areaConsola.setEditable(false);
         JScrollPane scrollConsola = new JScrollPane(areaConsola);
         scrollConsola.setBorder(BorderFactory.createTitledBorder("Historial de Acciones"));
+        
 
         panelCentral.add(panelBotones, BorderLayout.NORTH);
         panelCentral.add(scrollConsola, BorderLayout.CENTER);
